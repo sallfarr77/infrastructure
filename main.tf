@@ -38,9 +38,8 @@ resource "google_compute_instance" "vm_instance" {
 
   metadata_startup_script = <<-EOF
     #!/bin/bash
-    echo 'root:password-terraform' | chpasswd
-
     sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+    echo 'root:030201' | chpasswd
     systemctl restart sshd
   EOF
 
