@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = ("gcp-cred")
+  credentials = var.gcp-cred
 
   project = "development-404506"
   region  = "asia-southeast2"
