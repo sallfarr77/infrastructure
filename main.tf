@@ -36,14 +36,10 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-metadata = {
-  user-data = <<-EOF
-    #cloud-config
-    password: terraform
-    chpasswd: { expire: False }
-    ssh_pwauth: True
-EOF
-}
+  metadata_startup_script = <<-EOF
+    #!/bin/bash
+    echo 'root:password-terraform' | chpasswd
+  EOF
 
   network_interface {
     network = google_compute_network.vpc_network.name
