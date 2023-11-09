@@ -7,6 +7,11 @@ terraform {
   }
 }
 
+variable "gcp-cred" {
+  description = "Google Cloud Platform Credentials"
+  type        = string
+}
+
 provider "google" {
   credentials = var.gcp-cred
 
