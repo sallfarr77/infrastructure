@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("~/.ssh/development-404506-073663f34d9c.json")
+  credentials = ("gcp-cred")
 
   project = "development-404506"
   region  = "asia-southeast2"
