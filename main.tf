@@ -46,7 +46,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${file(var.gce_ssh_pub_key_file)}"
+    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
   }
 
   network_interface {
