@@ -26,7 +26,7 @@ resource "google_compute_network" "vpc_network" {
 
 variable "gce_ssh_user" {
   type    = string
-  default = "root"
+  default = "salman"
 }
 
 variable "gce_ssh_pub_key_file" {
@@ -41,7 +41,7 @@ resource "google_compute_instance" "vm_instance" {
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-11"
-      size  = 20
+      size  = 50
     }
   }
 
