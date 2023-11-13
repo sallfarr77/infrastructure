@@ -55,6 +55,11 @@ resource "google_compute_instance" "vm_instance" {
   }
 }
 
+resource "google_compute_address" "static_ip" {
+  name   = "terraform-static-ip"
+  region = "asia-southeast2"
+}
+
 resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
   network = google_compute_network.vpc_network.name
