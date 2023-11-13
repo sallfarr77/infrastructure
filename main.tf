@@ -36,12 +36,12 @@ variable "gce_ssh_pub_key_file" {
 
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-instance"
-  machine_type = "e2-micro"
+  machine_type = "e2-medium"
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
-      size  = 50
+      image = "ubuntu-2204-lts"
+      size  = 100
     }
   }
 
