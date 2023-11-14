@@ -36,7 +36,7 @@ variable "gce_ssh_pub_key_file" {
 
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-instance"
-  machine_type = "e2-medium"
+  machine_type = "e2-standard-2"
 
   boot_disk {
     initialize_params {
@@ -51,7 +51,9 @@ resource "google_compute_instance" "vm_instance" {
 
   network_interface {
     network = google_compute_network.vpc_network.name
-    access_config {}
+    access_config {
+      nat_ip = google_compute_address.static_ip.name
+    }
   }
 }
 
