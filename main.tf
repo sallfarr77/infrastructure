@@ -14,10 +14,9 @@ variable "gcp-cred" {
 
 provider "google" {
   credentials = var.gcp-cred
-
-  project = "development-404506"
-  region  = "asia-southeast2"
-  zone    = "asia-southeast2-a"
+  project     = "development-404506"
+  region      = "asia-southeast2"
+  zone        = "asia-southeast2-a"
 }
 
 resource "google_compute_network" "vpc_network" {
@@ -45,15 +44,15 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
-  }
-
   network_interface {
     network = google_compute_network.vpc_network.name
     access_config {
-      nat_ip = google_compute_address.static_ip.name
+      nat_ip = google_compute_address.static_ip.address
     }
+  }
+
+  metadata = {
+    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
   }
 }
 
